@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE40D089591D1DB239A612F6 /* BirdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D4097D0E8836743D412E /* BirdManager.swift */; };
+		BE40D1198FD6593FE547A4AD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D6D9FDB0ED41CE5BC70E /* NetworkManager.swift */; };
+		BE40D76A415A53BA64DF3C01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE40D1F6A4709CE5B52F3DED /* LaunchScreen.storyboard */; };
+		BE40D809A049F750EC1DDCAA /* BikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D4A95B49A69C4FBB03B5 /* BikeModel.swift */; };
+		BE40D8719238296C7242C86E /* MobikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D03EE073ADA7ABF76597 /* MobikeManager.swift */; };
+		BE40D8E27D570375A52830E8 /* BikeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40DA31F0D464B7B6D53C22 /* BikeAnnotation.swift */; };
+		BE40DAF12DA23005C1B388F5 /* SharedBikeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D5203525B7D53BD3DFD3 /* SharedBikeProtocol.swift */; };
+		BE40DB2D9FF4A693C55C6E32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D679A54F3120BD7D7EAD /* LocationManager.swift */; };
+		BE40DC5783EADF991967384B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE40D144C7D43E558DEDE142 /* MapViewController.swift */; };
+		BE40DC5FAAD871895E4B53AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE40D00739DE79523DFDA582 /* Main.storyboard */; };
 		C103239E222DA4F300AF3DD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103239D222DA4F300AF3DD5 /* AppDelegate.swift */; };
-		C10323A0222DA4F300AF3DD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C103239F222DA4F300AF3DD5 /* ViewController.swift */; };
-		C10323A3222DA4F300AF3DD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10323A1222DA4F300AF3DD5 /* Main.storyboard */; };
 		C10323A5222DA4F400AF3DD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C10323A4222DA4F400AF3DD5 /* Assets.xcassets */; };
-		C10323A8222DA4F400AF3DD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C10323A6222DA4F400AF3DD5 /* LaunchScreen.storyboard */; };
 		C10323B3222DA4F400AF3DD5 /* My_RideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10323B2222DA4F400AF3DD5 /* My_RideTests.swift */; };
 		C10323BE222DA4F400AF3DD5 /* My_RideUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10323BD222DA4F400AF3DD5 /* My_RideUITests.swift */; };
 /* End PBXBuildFile section */
@@ -34,12 +41,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE40D03EE073ADA7ABF76597 /* MobikeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobikeManager.swift; sourceTree = "<group>"; };
+		BE40D144C7D43E558DEDE142 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		BE40D4097D0E8836743D412E /* BirdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirdManager.swift; sourceTree = "<group>"; };
+		BE40D4A95B49A69C4FBB03B5 /* BikeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeModel.swift; sourceTree = "<group>"; };
+		BE40D5203525B7D53BD3DFD3 /* SharedBikeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedBikeProtocol.swift; sourceTree = "<group>"; };
+		BE40D679A54F3120BD7D7EAD /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		BE40D6D9FDB0ED41CE5BC70E /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		BE40D6FED4117FBC8038F360 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BE40DA31F0D464B7B6D53C22 /* BikeAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeAnnotation.swift; sourceTree = "<group>"; };
+		BE40DF3829AC29429344FE06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C103239A222DA4F300AF3DD5 /* My Ride.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Ride.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C103239D222DA4F300AF3DD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C103239F222DA4F300AF3DD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C10323A2222DA4F300AF3DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C10323A4222DA4F400AF3DD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C10323A7222DA4F400AF3DD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C10323A9222DA4F400AF3DD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C10323AE222DA4F400AF3DD5 /* My RideTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "My RideTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10323B2222DA4F400AF3DD5 /* My_RideTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_RideTests.swift; sourceTree = "<group>"; };
@@ -74,12 +88,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE40D3DD9B68E18FEE861A9E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BE40D144C7D43E558DEDE142 /* MapViewController.swift */,
+				BE40DA31F0D464B7B6D53C22 /* BikeAnnotation.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		BE40D3EFA198B6A48ED3E7F8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BE40D1F6A4709CE5B52F3DED /* LaunchScreen.storyboard */,
+				BE40D00739DE79523DFDA582 /* Main.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		BE40DCE9A28624ECA68778BA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				BE40D6D9FDB0ED41CE5BC70E /* NetworkManager.swift */,
+				BE40D679A54F3120BD7D7EAD /* LocationManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		BE40DD309ED651FAEEE24726 /* Shared Bike */ = {
+			isa = PBXGroup;
+			children = (
+				BE40D5203525B7D53BD3DFD3 /* SharedBikeProtocol.swift */,
+				BE40D03EE073ADA7ABF76597 /* MobikeManager.swift */,
+				BE40D4A95B49A69C4FBB03B5 /* BikeModel.swift */,
+				BE40D4097D0E8836743D412E /* BirdManager.swift */,
+			);
+			path = "Shared Bike";
+			sourceTree = "<group>";
+		};
 		C1032391222DA4F300AF3DD5 = {
 			isa = PBXGroup;
 			children = (
 				C103239C222DA4F300AF3DD5 /* My Ride */,
-				C10323B1222DA4F400AF3DD5 /* My RideTests */,
-				C10323BC222DA4F400AF3DD5 /* My RideUITests */,
+				C10323B1222DA4F400AF3DD5 /* My Ride Tests */,
+				C10323BC222DA4F400AF3DD5 /* My Ride UI Tests */,
 				C103239B222DA4F300AF3DD5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,31 +150,32 @@
 			isa = PBXGroup;
 			children = (
 				C103239D222DA4F300AF3DD5 /* AppDelegate.swift */,
-				C103239F222DA4F300AF3DD5 /* ViewController.swift */,
-				C10323A1222DA4F300AF3DD5 /* Main.storyboard */,
 				C10323A4222DA4F400AF3DD5 /* Assets.xcassets */,
-				C10323A6222DA4F400AF3DD5 /* LaunchScreen.storyboard */,
 				C10323A9222DA4F400AF3DD5 /* Info.plist */,
+				BE40D3EFA198B6A48ED3E7F8 /* UI */,
+				BE40DD309ED651FAEEE24726 /* Shared Bike */,
+				BE40DCE9A28624ECA68778BA /* Utils */,
+				BE40D3DD9B68E18FEE861A9E /* Map */,
 			);
 			path = "My Ride";
 			sourceTree = "<group>";
 		};
-		C10323B1222DA4F400AF3DD5 /* My RideTests */ = {
+		C10323B1222DA4F400AF3DD5 /* My Ride Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C10323B2222DA4F400AF3DD5 /* My_RideTests.swift */,
 				C10323B4222DA4F400AF3DD5 /* Info.plist */,
 			);
-			path = "My RideTests";
+			path = "My Ride Tests";
 			sourceTree = "<group>";
 		};
-		C10323BC222DA4F400AF3DD5 /* My RideUITests */ = {
+		C10323BC222DA4F400AF3DD5 /* My Ride UI Tests */ = {
 			isa = PBXGroup;
 			children = (
 				C10323BD222DA4F400AF3DD5 /* My_RideUITests.swift */,
 				C10323BF222DA4F400AF3DD5 /* Info.plist */,
 			);
-			path = "My RideUITests";
+			path = "My Ride UI Tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +246,7 @@
 				TargetAttributes = {
 					C1032399222DA4F300AF3DD5 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					C10323AD222DA4F400AF3DD5 = {
 						CreatedOnToolsVersion = 10.1;
@@ -229,9 +283,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10323A8222DA4F400AF3DD5 /* LaunchScreen.storyboard in Resources */,
 				C10323A5222DA4F400AF3DD5 /* Assets.xcassets in Resources */,
-				C10323A3222DA4F300AF3DD5 /* Main.storyboard in Resources */,
+				BE40D76A415A53BA64DF3C01 /* LaunchScreen.storyboard in Resources */,
+				BE40DC5FAAD871895E4B53AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +310,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C10323A0222DA4F300AF3DD5 /* ViewController.swift in Sources */,
 				C103239E222DA4F300AF3DD5 /* AppDelegate.swift in Sources */,
+				BE40DAF12DA23005C1B388F5 /* SharedBikeProtocol.swift in Sources */,
+				BE40D8719238296C7242C86E /* MobikeManager.swift in Sources */,
+				BE40D809A049F750EC1DDCAA /* BikeModel.swift in Sources */,
+				BE40D089591D1DB239A612F6 /* BirdManager.swift in Sources */,
+				BE40D1198FD6593FE547A4AD /* NetworkManager.swift in Sources */,
+				BE40DB2D9FF4A693C55C6E32 /* LocationManager.swift in Sources */,
+				BE40DC5783EADF991967384B /* MapViewController.swift in Sources */,
+				BE40D8E27D570375A52830E8 /* BikeAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,18 +354,18 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C10323A1222DA4F300AF3DD5 /* Main.storyboard */ = {
+		BE40D00739DE79523DFDA582 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C10323A2222DA4F300AF3DD5 /* Base */,
+				BE40D6FED4117FBC8038F360 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C10323A6222DA4F400AF3DD5 /* LaunchScreen.storyboard */ = {
+		BE40D1F6A4709CE5B52F3DED /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C10323A7222DA4F400AF3DD5 /* Base */,
+				BE40DF3829AC29429344FE06 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -433,14 +494,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3QXV6NHS9;
 				INFOPLIST_FILE = "My Ride/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liatgrin.My-Ride";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liatgrin.myride;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -450,14 +512,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S3QXV6NHS9;
 				INFOPLIST_FILE = "My Ride/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liatgrin.My-Ride";
+				PRODUCT_BUNDLE_IDENTIFIER = com.liatgrin.myride;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

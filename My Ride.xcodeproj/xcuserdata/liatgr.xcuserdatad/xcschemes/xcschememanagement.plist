@@ -4,10 +4,28 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>My Ride.xcscheme_^#shared#^_</key>
+		<key>My Ride 2.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C1032399222DA4F300AF3DD5</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>C10323AD222DA4F400AF3DD5</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>C10323B8222DA4F400AF3DD5</key>
+		<dict>
+			<key>primary</key>
+			<true />
 		</dict>
 	</dict>
 </dict>
