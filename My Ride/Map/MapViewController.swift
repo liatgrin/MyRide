@@ -11,13 +11,13 @@ import MapKit
 
 class MapViewController: UIViewController, LocationManagerDelegate, SharedBikeDelegate, MKMapViewDelegate {
 
-    private static let bikeAnnotationReuseId = "bike_annotation"
-
     @IBOutlet private weak var mapView: MKMapView!
 
     private let locationManager = LocationManager()
 
-    private let sharedBikeManagers: [SharedBikeProtocol] = [MobikeManager.sharedInstance, BirdManager.sharedInstance]
+    private let sharedBikeManagers: [SharedBikeProtocol] = [MobikeManager.sharedInstance, BirdManager.sharedInstance, WindManager.sharedInstance, LeoManager.sharedInstance, LimeManager.sharedInstance]
+
+    private var shouldCenterOnLocation = true
 
     // Tel Aviv: 32.0853° N, 34.7818° E
 
@@ -28,6 +28,11 @@ class MapViewController: UIViewController, LocationManagerDelegate, SharedBikeDe
 
         MobikeManager.sharedInstance.delegate = self
         BirdManager.sharedInstance.delegate = self
+        WindManager.sharedInstance.delegate = self
+        LeoManager.sharedInstance.delegate = self
+        LimeManager.sharedInstance.delegate = self
+
+        mapView.showsUserLocation = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +47,8 @@ class MapViewController: UIViewController, LocationManagerDelegate, SharedBikeDe
 // MKMapViewDelegate
 
 extension MapViewController {
+
+    private static let bikeAnnotationReuseId = "bike_annotation"
 
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if (annotation is MKUserLocation) {
@@ -85,7 +92,10 @@ extension MapViewController {
 extension MapViewController {
 
     func didUpdateLocation(_ location: CLLocation) {
-        centerMapOnLocation(location)
+        if shouldCenterOnLocation {
+            centerMapOnLocation(location)
+            shouldCenterOnLocation = false
+        }
 
         for sharedBikeManager in sharedBikeManagers {
             sharedBikeManager.getBikes(around: location)
@@ -93,7 +103,7 @@ extension MapViewController {
     }
 
     private func centerMapOnLocation(_ location: CLLocation) {
-        let viewRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+        let viewRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         mapView.setRegion(viewRegion, animated: false)
     }
 }

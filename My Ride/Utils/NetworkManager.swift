@@ -22,16 +22,22 @@ class NetworkManager {
         request.httpBody = body
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let response = response as? HTTPURLResponse, error == nil else {  // check for fundamental networking error
+            guard let httpResponse = response as? HTTPURLResponse, error == nil else {  // check for fundamental networking error
                 print("error", error ?? "Unknown error")
+                completion(nil)
                 return
             }
 
-            guard (200 ... 299) ~= response.statusCode else { // check for http errors
-                print("statusCode should be 2xx, but is \(response.statusCode)")
-                print("response = \(response)")
+            guard (200 ... 299) ~= httpResponse.statusCode else { // check for http errors
+                print("statusCode should be 2xx, but is \(httpResponse.statusCode)")
+                print("response = \(httpResponse)")
+                completion(nil)
                 return
             }
+
+            let responseHeaders = httpResponse.allHeaderFields as? [String : String] ?? [:]
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: responseHeaders, for: url)
+            HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
 
             completion(data)
         }

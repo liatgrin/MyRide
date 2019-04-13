@@ -13,7 +13,7 @@ protocol LocationManagerDelegate {
 class LocationManager: NSObject, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
-    var currentLocation: CLLocation!
+    var currentLocation: CLLocation?
 
     var delegate: LocationManagerDelegate?
 
@@ -42,7 +42,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         }
 
         // Configure and start the service.
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 100.0  // In meters.
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
@@ -56,9 +56,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
             return
         }
 
-        if !lastLocation.isEqual(currentLocation) {
+        if currentLocation == nil || lastLocation.distance(from: currentLocation!) > 1 {
+            // difference is more than 1 meter
             currentLocation = lastLocation
-            delegate?.didUpdateLocation(currentLocation)
+            delegate?.didUpdateLocation(lastLocation)
         }
     }
 }

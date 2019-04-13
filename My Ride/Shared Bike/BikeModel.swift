@@ -8,6 +8,9 @@ import Foundation
 enum BikeType: String {
     case Mobike
     case Bird
+    case Wind
+    case Leo
+    case Lime
 }
 
 struct BikeModel {

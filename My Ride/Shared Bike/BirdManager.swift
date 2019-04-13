@@ -12,19 +12,32 @@ class BirdManager: SharedBikeProtocol {
     static var sharedInstance: SharedBikeProtocol = BirdManager()
 
     private static let tokenKey = "bird_token"
+    private static let tokenExpirationKey = "bird_token_expiration"
     private static let emailKey = "bird_email"
+
+    private let fetchDataQueue = DispatchQueue(label: "bird_fetch_data")
+    private var isFetchingData = false;
 
     var delegate: SharedBikeDelegate?
 
-    func getBikes(around location: CoreLocation.CLLocation) {
-        getAuthToken { token in
-            self.getBikes(around: location, token: token) { bikes in
-                self.delegate?.didRetrieveBikeInfo(bikes)
+    func getBikes(around location: CLLocation) {
+        fetchDataQueue.async {
+            if self.isFetchingData {
+                return
+            }
+
+            self.isFetchingData = true
+            self.getAuthToken { token in
+                self.getBikes(around: location, token: token) { bikes in
+                    self.isFetchingData = false
+                    self.delegate?.didRetrieveBikeInfo(bikes)
+                }
             }
         }
+
     }
 
-    private func getBikes(around location: CoreLocation.CLLocation, token: String?, completion: @escaping ([BikeModel]) -> ()) {
+    private func getBikes(around location: CLLocation, token: String?, completion: @escaping ([BikeModel]) -> ()) {
         guard let token = token else {
             print("got nil token - can't retrieve birds")
             completion([])
@@ -60,7 +73,7 @@ class BirdManager: SharedBikeProtocol {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: jsonData) as? [String: Any],
               let birdsObject = jsonObject["birds"] as? [[String: Any]]
                 else {
-            print("parsing mobike response failed")
+            print("parsing nearby birds response failed")
             return []
         }
 
@@ -75,50 +88,47 @@ class BirdManager: SharedBikeProtocol {
     }
 
     private func getAuthToken(_ completion: @escaping (String?) -> ()) {
-        if let token = UserDefaults.standard.string(forKey: BirdManager.tokenKey) {
-            completion(token)
+        let token = UserDefaults.standard.string(forKey: BirdManager.tokenKey)
+        guard let tokenExpiration = UserDefaults.standard.object(forKey: BirdManager.tokenExpirationKey) as? Date,
+              tokenExpiration.timeIntervalSinceNow > 2, // token expiration is at least 2 seconds
+              token != nil else {
+            self.requestAuthentication(defaultToken: token, completion: completion)
+            return
         }
-        else {
-            let headers = ["Content-type": "application/json",
-                           "Platform": "ios",
-                           "Device-id": UIDevice().identifierForVendor!.uuidString]
-            let body = try! JSONSerialization.data(withJSONObject: ["email": getEmail()])
 
-            NetworkManager.postRequest(url: URL(string: "https://api.bird.co/user/login")!, headers: headers, body: body) { data in
+        completion(token)
+    }
 
-                guard let data = data else {
-                    completion(nil)
-                    return
-                }
+    private func requestAuthentication(defaultToken: String?, completion: @escaping (String?) -> ()) {
+        let identifier = UIDevice().identifierForVendor!.uuidString
+        let headers = ["Content-type": "application/json",
+                       "Platform": "ios",
+                       "Device-id": identifier]
+        let body = try! JSONSerialization.data(withJSONObject: ["email": "\(identifier)@myride.com"])
 
-                let responseString = String(data: data, encoding: .utf8)!
-                print("responseString = \(responseString)")
+        NetworkManager.postRequest(url: URL(string: "https://api.bird.co/user/login")!, headers: headers, body: body) { data in
 
-                let token = self.parseAuthTokenResponse(jsonData: data)
-                UserDefaults.standard.set(token, forKey: BirdManager.tokenKey)
-                completion(token)
+            guard let data = data else {
+                completion(nil)
+                return
             }
+
+            let (token, expiration) = self.parseAuthenticationResponse(jsonData: data, defaultToken: defaultToken)
+            UserDefaults.standard.set(token, forKey: BirdManager.tokenKey)
+            UserDefaults.standard.set(expiration, forKey: BirdManager.tokenExpirationKey)
+            completion(token)
         }
     }
 
-    private func parseAuthTokenResponse(jsonData: Data) -> String? {
+    private func parseAuthenticationResponse(jsonData: Data, defaultToken: String?) -> (String?, Date?) {
         guard let jsonObject = try? JSONSerialization.jsonObject(with: jsonData) as? [String: String]
                 else {
             print("parsing bird auth token response failed")
-            return nil
+            return (nil, nil)
         }
 
-        return jsonObject["token"]
+        let dateFormatter = ISO8601DateFormatter()
+        dateFormatter.formatOptions =  [.withInternetDateTime, .withFractionalSeconds]
+        return (jsonObject["token"] ?? defaultToken, dateFormatter.date(from: jsonObject["expires_at"] ?? ""))
     }
-
-    private func getEmail() -> String {
-        if let email = UserDefaults.standard.string(forKey: BirdManager.emailKey) {
-            return email
-        }
-
-        let email = "\(UIDevice().identifierForVendor!.uuidString.prefix(8))@myride.com"
-        UserDefaults.standard.set(email, forKey: BirdManager.emailKey)
-        return email
-    }
-
 }

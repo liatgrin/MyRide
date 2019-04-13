@@ -26,6 +26,12 @@ class BikeAnnotation: NSObject, MKAnnotation {
             return .orange
         case .Bird:
             return .black
+        case .Wind:
+            return .cyan
+        case .Leo:
+            return .yellow
+        case .Lime:
+            return .green
         }
     }
 }
